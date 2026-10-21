@@ -1,0 +1,19 @@
+# Global code owner — Andrea D'Ambrosio
+
+- @andrebuilds
+
+# Prisma schema requires extra scrutiny
+
+prisma/ @andrebuilds
+
+# CI/CD pipelines
+
+.github/workflows/ @andrebuilds
+
+# Security-sensitive files
+
+SECURITY.md @andrebuilds
+src/middleware.ts @andrebuilds
+src/actions/auth/ @andrebuilds
+src/actions/stripe/ @andrebuilds
+src/actions/payments/ @andrebuilds

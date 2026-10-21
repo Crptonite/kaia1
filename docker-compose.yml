@@ -1,0 +1,49 @@
+# Kaia — Docker Compose (Development)
+# Usage: docker compose up
+#
+# For production see docker-compose.prod.yml
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: kaia_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: kaia
+      POSTGRES_PASSWORD: kaia_dev_password
+      POSTGRES_DB: kaia
+    ports:
+      - "5432:5432"
+    volumes:
+      - kaia_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kaia"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      target: deps # Only install deps — mount source for hot reload
+    container_name: kaia_app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      # Override DATABASE_URL to point to the Docker Postgres service
+      DATABASE_URL: "postgresql://kaia:kaia_dev_password@db:5432/kaia"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    command: sh -c "bunx prisma migrate dev && bun dev"
+
+volumes:
+  kaia_pgdata:
+    driver: local

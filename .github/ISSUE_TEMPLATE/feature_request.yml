@@ -1,0 +1,73 @@
+name: Feature Request
+description: Suggest an idea or enhancement for Kaia
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature! 💡
+        Please check the [Roadmap](https://github.com/andrebuilds/kaia#roadmap) and existing issues before submitting.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What problem does this feature solve? What are you trying to accomplish?
+      placeholder: I'm always frustrated when...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe the solution you'd like. Be as specific as possible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Have you considered any alternative solutions or workarounds?
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of the application does this relate to?
+      options:
+        - Chatbot widget
+        - Dashboard
+        - AI / OpenAI integration
+        - Email marketing
+        - Appointment booking
+        - Billing / Stripe
+        - Authentication / Clerk
+        - Real-time (Pusher)
+        - Settings / customisation
+        - Developer experience (DX)
+        - Documentation
+        - CI / CD
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add any mockups, screenshots, or links that help illustrate your idea.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and this is not a duplicate
+          required: true
+        - label: This feature aligns with Kaia's goal of being an embeddable AI sales assistant
+          required: true
+        - label: I am willing to help implement this feature (optional but appreciated!)

@@ -1,0 +1,82 @@
+name: Bug Report
+description: Something is broken or behaving unexpectedly
+title: "[Bug]: "
+labels: ["bug", "triage"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! 🙏
+        Please search existing issues before opening a new one.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+      placeholder: When I do X, Y happens instead of Z.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Steps to reliably reproduce the behaviour.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll to '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: What actually happened? Include error messages and stack traces.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Please fill in the relevant details.
+      value: |
+        - OS: [e.g. macOS 14, Ubuntu 22.04, Windows 11]
+        - Node.js version: [e.g. 20.11.0]
+        - Bun version: [e.g. 1.1.0]
+        - Browser: [e.g. Chrome 124, Firefox 125]
+        - Kaia version / commit: [e.g. v1.0.0 or abc1234]
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs / screenshots
+      description: Paste any relevant log output or attach screenshots.
+      render: shell
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and this is not a duplicate
+          required: true
+        - label: I can reproduce this on the latest `main` branch
+          required: true
+        - label: I have removed all sensitive information from this report
+          required: true
